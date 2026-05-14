@@ -108,8 +108,3 @@ This project is a practical extension of my academic work on distributed system 
 
 ---
 
-## Author
-
-Master's student, Systems Design, Tokyo Metropolitan University  
-Research focus: reliability and fault tolerance in distributed systems, cross-chain interoperability  
-GitHub: [github.com/infinite-oreo](https://github.com/infinite-oreo)
