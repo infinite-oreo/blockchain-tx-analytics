@@ -1,0 +1,259 @@
+/* ── Google Fonts ───────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono&display=swap');
+
+/* ── 设计令牌（Light） ─────────────────────────────────── */
+:root {
+  --background: #faf9f5;
+  --foreground: #3d3929;
+  --card: #faf9f5;
+  --card-foreground: #141413;
+  --popover: #ffffff;
+  --popover-foreground: #28261b;
+  --primary: #c96442;
+  --primary-foreground: #ffffff;
+  --secondary: #e9e6dc;
+  --secondary-foreground: #535146;
+  --muted: #ede9de;
+  --muted-foreground: #83827d;
+  --accent: #e9e6dc;
+  --accent-foreground: #28261b;
+  --destructive: #141413;
+  --destructive-foreground: #ffffff;
+  --border: #dad9d4;
+  --input: #b4b2a7;
+  --ring: #c96442;
+  --chart-1: #b05730;
+  --chart-2: #9c87f5;
+  --chart-3: #ded8c4;
+  --chart-4: #dbd3f0;
+  --chart-5: #b4552d;
+  --radius: 0.5rem;
+
+  /* ── 旧变量桥接（组件无需改动） ───────────────────────── */
+  --bg:      var(--background);
+  --surface: var(--card);
+  --text:    var(--foreground);
+  --muted:   var(--muted-foreground);
+  --hover:   var(--accent);
+  --success: #3d8a5c;
+  --danger:  #c0392b;
+  --warning: #a0622a;
+}
+
+/* ── 深色模式令牌 ───────────────────────────────────────── */
+.dark {
+  --background: #262624;
+  --foreground: #c3c0b6;
+  --card: #262624;
+  --card-foreground: #faf9f5;
+  --popover: #30302e;
+  --popover-foreground: #e5e5e2;
+  --primary: #d97757;
+  --primary-foreground: #ffffff;
+  --secondary: #faf9f5;
+  --secondary-foreground: #30302e;
+  --muted: #1b1b19;
+  --muted-foreground: #b7b5a9;
+  --accent: #1a1915;
+  --accent-foreground: #f5f4ee;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #3e3e38;
+  --input: #52514a;
+  --ring: #d97757;
+  --chart-1: #b05730;
+  --chart-2: #9c87f5;
+  --chart-3: #1a1915;
+  --chart-4: #2f2b48;
+  --chart-5: #b4552d;
+
+  /* ── 旧变量桥接（深色） ────────────────────────────────── */
+  --bg:      var(--background);
+  --surface: var(--card);
+  --text:    var(--foreground);
+  --muted:   var(--muted-foreground);
+  --hover:   var(--accent);
+  --success: #4caf7a;
+  --danger:  #e05c4b;
+  --warning: #c8843a;
+}
+
+/* ── 全局重置 ───────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ── 顶部导航 ───────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+nav { display: flex; gap: 4px; flex: 1; }
+
+nav button {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.12s;
+}
+nav button:hover  { background: var(--hover); color: var(--text); }
+nav button.active { background: var(--hover); color: var(--primary); font-weight: 500; }
+
+/* ── 深浅模式切换按钮 ──────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.theme-toggle:hover {
+  background: var(--hover);
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+/* ── 页面布局 ───────────────────────────────────────────── */
+main { padding: 24px 32px; }
+
+.page { display: flex; flex-direction: column; gap: 20px; }
+
+/* ── KPI 卡片 ───────────────────────────────────────────── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+.kpi-card.success .kpi-value { color: var(--success); }
+
+.kpi-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── 图表容器 ───────────────────────────────────────────── */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.card h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── 数据表 ─────────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hover);
+  color: var(--text);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--hover); }
+
+.data-table code {
+  font-family: 'Roboto Mono', 'SFMono-Regular', Consolas, monospace;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+/* ── 状态徽章 ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-success { background: rgba(61, 138, 92, 0.15);  color: var(--success); }
+.badge-danger  { background: rgba(192, 57, 43, 0.15);  color: var(--danger); }
+.badge-warning { background: rgba(160, 98, 42, 0.15);  color: var(--warning); }
+
+.dark .badge-success { background: rgba(76, 175, 122, 0.15); }
+.dark .badge-danger  { background: rgba(224, 92, 75, 0.15); }
+.dark .badge-warning { background: rgba(200, 132, 58, 0.15); }

@@ -1,4 +1,15 @@
 blockchain_analytics.db
 __pycache__/
+*.pyc
+.venv/
+venv/
 
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
 
+# GEB 文档系统
+CLAUDE.md
+**/CLAUDE.md
+.claude/
